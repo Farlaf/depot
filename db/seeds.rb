@@ -6,7 +6,7 @@
 # We make no guarantees that this code is fit for any purpose.
 # Visit https://pragprog.com/titles/rails7 for more book information.
 #---
-# encoding: utf-8
+# frozen_string_literal: true
 
 Product.delete_all
 Product.create!(title: 'Docker for Rails Developers',
