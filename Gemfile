@@ -57,6 +57,10 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem 'debug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rubocop', '~> 1.56', require: false
+
+  gem 'simplecov'
+  gem 'simplecov-lcov', '~> 0.8.0'
+  gem 'coveralls_reborn', require: false
 end
 
 group :development do
