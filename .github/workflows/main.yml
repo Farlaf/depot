@@ -1,20 +1,52 @@
 name: Main
 
 on:
-  pull_request:
-    branches:
-      - 'main'
+
   push:
-    branches:
+      - 'main'
+  pull_request:
       - 'main'
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports: ['5432:5432']
+
     steps:
       - uses: actions/checkout@v2
-      - name: Run tests
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1.80.0
+        with:
+          ruby-version: 2.6.6
+
+      - uses: Borales/actions-yarn@v2.3.0
+        with:
+          cmd: install
+
+      - name: Install Dependencies
+        run: |
+          sudo apt install -yqq libpq-dev
+          gem install bundler
+
+      - name: Install Gems
+        run: |
+          bundle install
+
+      - name: Setup database
         env:
-          COVERAGE: true
+          PG_DATABASE: postgres
+          PG_HOST: localhost
+          PG_USER: postgres
+          PG_PASSWORD: password
           RAILS_ENV: test
-        run: docker-compose --file docker-compose.ci.yml run ci
+          WITH_COVERAGE: true
+          DISABLE_SPRING: 1
+        run: |
+          bundle exec rails db:prepare
+          bundle exec rake test
