@@ -7,13 +7,10 @@ services:
     build: .
     depends_on:
       - db
-    ports:
-      - 5432:5432
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
       - COVERAGE
       - RAILS_ENV
       - DATABASE_HOST=db
       - DATABASE_USERNAME=postgres
-    command: sh -c "bundle exec rails db:create db:migrate && bundle exec rake test"
+    command: sh -c "bundle install && bundle exec rails db:create db:migrate && bundle exec rake test"
+
