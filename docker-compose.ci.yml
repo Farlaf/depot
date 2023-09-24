@@ -2,7 +2,7 @@ version: '2'
 
 services:
   db:
-    image: postgres:15.0-alpine
+    image: postgres:10.3-alpine
   ci:
     build: .
     depends_on:
@@ -12,6 +12,4 @@ services:
       - RAILS_ENV
       - DATABASE_HOST=db
       - DATABASE_USERNAME=postgres
-      - DATABASE_PASSWORD=postgres
-    command: sh -c "bundle exec rails db:create db:migrate && bundle exec rake test"
-
+    command: sh -c "bundle install && bundle exec rails db:create db:migrate && bundle exec rake test"
