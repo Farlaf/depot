@@ -7,11 +7,11 @@ default: &default
 
 development:
   <<: *default
-  database: <%= ENV['DATABASE_NAME'] || 'task_manager_development' %>
+  database: <%= ENV['DATABASE_NAME'] || 'depot_development' %>
 
 test:
   <<: *default
-  database: task_manager_test
+  database: depot_test
   port: <%= (ENV['CI_NAME'] == 'codeship') ? 5433 : 5432 %>
 
 production:
