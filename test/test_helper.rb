@@ -22,7 +22,7 @@ require 'rails/test_help'
 module ActiveSupport
   class TestCase
     # Run tests in parallel with specified workers
-    parallelize(workers: :number_of_processors)
+    ENV['RAILS_ENV'] || parallelize(workers: :number_of_processors)
 
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
