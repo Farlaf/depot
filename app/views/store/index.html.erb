@@ -5,8 +5,10 @@
     </p>
   <% end %>
 
+  <% if @user_visit > 4 %>
+    <span class="float-right">You have vistied us <%= pluralize( @user_visit, 'time') %></span>
+  <% end %>
   <h1 class="font-bold text-xl mb-6 pb-2 border-b-2">Your Catalog</h1>
-
   <ul>
     <% cache @products do %>
       <% @products.each do |product| %>
