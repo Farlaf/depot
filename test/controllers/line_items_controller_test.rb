@@ -49,4 +49,17 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to line_items_url
   end
+
+  test 'should group same products' do
+    assert_difference('LineItem.count') do
+      post line_items_url, params: { product_id: products(:ruby).id }
+    end
+
+    assert_no_difference('LineItem.count') do
+      post line_items_url, params: { product_id: products(:ruby).id }
+    end
+
+    double_item = LineItem.find_by(product_id: products(:ruby).id)
+    assert double_item.quantity > 1
+  end
 end
