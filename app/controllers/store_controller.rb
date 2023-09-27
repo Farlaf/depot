@@ -6,6 +6,5 @@ class StoreController < ApplicationController
     session[:counter] += 1
 
     @user_visit = session[:counter]
-
   end
 end
