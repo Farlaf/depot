@@ -48,4 +48,10 @@ class CartsControllerTest < ActionDispatch::IntegrationTest
 
     assert_redirected_to store_index_url
   end
+
+  test 'should redirect invalid cart' do
+    get cart_url(15)
+
+    assert_redirected_to store_index_url
+  end
 end
