@@ -47,7 +47,9 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
       delete line_item_url(@line_item)
     end
 
-    assert_redirected_to line_items_url
+    follow_redirect!
+
+    assert_select @line_item.product.title, 0
   end
 
   test 'should group same products' do
