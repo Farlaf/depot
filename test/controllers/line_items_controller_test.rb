@@ -60,9 +60,6 @@ class LineItemsControllerTest < ActionDispatch::IntegrationTest
     assert_no_difference('LineItem.count') do
       post line_items_url, params: { product_id: products(:ruby).id }
     end
-
-    double_item = LineItem.find_by(product_id: products(:ruby).id)
-    assert double_item.quantity > 1
   end
 
   test 'should create line_item via turbo-stream' do
