@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
       if @order.save
         Cart.destroy(session[:cart_id])
         session[:cart_id] = nil
-        format.html { redirect_to store_index_url, notice: 'Thank you for your order' }
+        format.html { redirect_to(store_index_url, notice: 'Thank you for your order') }
         format.json { render(:show, status: :created, location: @order) }
       else
         format.html { render(:new, status: :unprocessable_entity) }
@@ -76,7 +76,7 @@ class OrdersController < ApplicationController
 
   def ensure_cart_inst_empty
     if @cart.line_items.empty?
-      redirect_to store_index_url, notice: 'Your cart is empty'
+      redirect_to(store_index_url, notice: 'Your cart is empty')
     end
   end
 end
