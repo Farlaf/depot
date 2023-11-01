@@ -24,9 +24,8 @@ require 'rails/test_help'
 
 module ActiveSupport
   class TestCase
-
-    Capybara.server_host = "0.0.0.0"
-    Capybara.app_host = "http://#{ENV.fetch("HOSTNAME")}:#{Capybara.server_port}"
+    Capybara.server_host = '0.0.0.0'
+    Capybara.app_host = "http://#{ENV.fetch('HOSTNAME')}:#{Capybara.server_port}"
 
     # Run tests in parallel with specified workers
     ENV['RAILS_ENV'] || parallelize(workers: :number_of_processors)
