@@ -57,13 +57,14 @@ class OrdersTest < ApplicationSystemTestCase
     fill_in 'Email', with: 'oleg@test.com'
 
     select 'Check', from: 'Pay type'
-    fill_in "Routing number", with: "123456"
-    fill_in "Account number", with: "987654"
-    click_button "Place Order"
+    fill_in 'Routing number', with: '123456'
+    fill_in 'Account number', with: '987654'
+
+    click_button 'Place Order'
     assert_text 'Thank you for your order'
 
-    # perform_enqueued_jobs
-    # perform_enqueued_jobs
+    perform_enqueued_jobs
+    perform_enqueued_jobs
     # assert_enqueued_jobs 2
 
     orders = Order.all
