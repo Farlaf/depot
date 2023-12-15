@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_01_092135) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_13_133456) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -39,10 +39,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_01_092135) do
     t.integer "pay_type"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "credit_card_number"
+    t.bigint "credit_card_number"
     t.string "expiration_date"
-    t.integer "routing_number"
-    t.integer "account_number"
+    t.bigint "routing_number"
+    t.bigint "account_number"
     t.integer "po_number"
   end
 

@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resources :carts
   root 'store#index', as: 'store_index'
   resources :products
+
+  mount LetterOpenerWeb::Engine, at: "/emails" if Rails.env.development?
 end

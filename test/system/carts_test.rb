@@ -6,11 +6,11 @@ class CartsTest < ApplicationSystemTestCase
 
     click_on 'Add to Cart', match: :first
 
-    assert has_content? 'Your Cart'
+    assert has_content?('Your Cart')
 
     click_on 'Empty Cart'
 
-    assert has_no_content? 'Your Cart'
+    assert has_no_content?('Your Cart')
   end
 
   test 'should highlight feature' do
@@ -18,6 +18,6 @@ class CartsTest < ApplicationSystemTestCase
 
     click_on 'Add to Cart', match: :first
 
-    assert has_css? '.line-item-highlight'
+    assert has_css?('.line-item-highlight')
   end
 end
