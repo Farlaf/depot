@@ -78,7 +78,7 @@ class OrdersTest < ApplicationSystemTestCase
     assert_equal 'Check', order.pay_type
     assert_equal 1, order.line_items.size
 
-    mail = ActionMailer::Base.deliveries.last
+    ActionMailer::Base.deliveries.last
 
     # assert_equal ["oleg@test.com"], mail.to
     # assert_equal 'Sam Ruby <depot@example.com>', mail[:from].value
