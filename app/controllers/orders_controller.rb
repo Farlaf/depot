@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  skip_before_action :authorize, only: [:new, :create]
+
   include CurrentCart
 
   before_action :set_cart, only: [:new, :create]
@@ -85,11 +87,12 @@ class OrdersController < ApplicationController
   end
 
   def pay_type_params
-    if order_params[:pay_type] == 'Credit card'
+    case order_params[:pay_type]
+    when 'Credit card'
       params.require(:order).permit(:credit_card_number, :expiration_date)
-    elsif order_params[:pay_type] == 'Check'
+    when 'Check'
       params.require(:order).permit(:routing_number, :account_number)
-    elsif order_params[:pay_type] == 'Purchase order'
+    when 'Purchase order'
       params.require(:order).permit(:po_number)
     else
       {}
