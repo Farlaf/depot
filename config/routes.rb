@@ -12,12 +12,16 @@ Rails.application.routes.draw do
   get 'sessions/new'
   get 'sessions/create'
   get 'sessions/destroy'
+
   resources :users
-  resources :orders
-  resources :line_items
-  resources :carts
-  root 'store#index', as: 'store_index'
   resources :products
+
+  scope '(:locale)' do
+    resources :orders
+    resources :line_items
+    resources :carts
+    root 'store#index', as: 'store_index', via: :all
+  end
 
   mount LetterOpenerWeb::Engine, at: "/emails" if Rails.env.development?
 end
