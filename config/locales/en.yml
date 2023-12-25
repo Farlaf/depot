@@ -12,3 +12,18 @@ en:
       title_html: "Your Book Catalog"
     product:
         buy_html: "Add to Cart"
+
+  carts:
+    cart:
+      title: "Your Cart"
+      empty: "Empty cart"
+      checkout: "Checkout"
+
+  number:
+    currency:
+      format:
+        unit: "$"
+        precision: 2
+        separator: "."
+        delimiter: ","
+        format: "%u%n"
