@@ -6,3 +6,9 @@ es:
       questions: "Preguntas"
       news: "Noticias"
       contact: "Contacto"
+
+  store:
+    index:
+      title_html: "Su Cat&aacute;logo"
+    product:
+      buy_html: "A&ntilde;adir al Carrito"

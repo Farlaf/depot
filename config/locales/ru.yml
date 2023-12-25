@@ -6,3 +6,9 @@ ru:
       questions: "Вопросы"
       news: "Новости"
       contact: "Контакты"
+
+  store:
+    index:
+      title_html: "Ваш Книжный Каталог"
+    product:
+      buy_html: "Добавить в корзину"

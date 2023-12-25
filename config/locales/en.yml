@@ -6,3 +6,9 @@ en:
       questions: "Questions"
       news: "News"
       contact: "Contact"
+
+  store:
+    index:
+      title_html: "Your Book Catalog"
+    product:
+        buy_html: "Add to Cart"
